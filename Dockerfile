@@ -1,6 +1,7 @@
 FROM node:16
 COPY package.json ./
 COPY package-lock.json ./ 
+RUN apk add --update nodejs npm
 RUN npm install --production
 COPY . .
 RUN npm run build
