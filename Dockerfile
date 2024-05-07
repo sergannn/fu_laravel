@@ -1,11 +1,15 @@
+FROM node:18-alpine as node
+
+# Build FE first
+WORKDIR /app
+COPY . .
+# Building assets
+RUN npm install && npm run build
+
 FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
 
-RUN apt-get update && \
-    apt-get install -y curl && \
-    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs
 # Image config
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
