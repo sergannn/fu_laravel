@@ -8,6 +8,8 @@ echo "Running composer"
 composer install --no-dev --working-dir=/var/www/html
 
 echo "Installing Laravel Breeze..."
+composer require laravel/breeze --dev
+
 php artisan breeze:install
 
 #echo "Generating application key..."
