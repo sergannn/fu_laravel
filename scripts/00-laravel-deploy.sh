@@ -7,8 +7,8 @@ echo "Running composer"
 #composer global require hirak/prestissimo
 composer install --no-dev --working-dir=/var/www/html
 
-#echo "Installing Laravel Breeze..."
-#php artisan breeze:install
+echo "Installing Laravel Breeze..."
+php artisan breeze:install
 
 #echo "Generating application key..."
 #php artisan key:generate --show
