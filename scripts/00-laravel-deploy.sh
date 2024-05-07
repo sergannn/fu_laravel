@@ -10,7 +10,7 @@ composer install --no-dev --working-dir=/var/www/html
 echo "Installing Laravel Breeze..."
 composer require laravel/breeze --dev
 
-php artisan breeze:install blade --no-interaction
+php artisan breeze:install react --no-interaction
 
 #echo "Generating application key..."
 #php artisan key:generate --show
