@@ -1,11 +1,6 @@
-FROM node:16
-COPY package.json ./
-COPY package-lock.json ./ 
-RUN apk add --update nodejs npm
-RUN npm install --production
-COPY . .
-RUN npm run build
-
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs \
+    npm                       # note this one
 FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
