@@ -10,8 +10,8 @@ composer install --no-dev --working-dir=/var/www/html
 #echo "Installing Laravel Breeze..."
 #php artisan breeze:install
 
-echo "Generating application key..."
-php artisan key:generate --show
+#echo "Generating application key..."
+#php artisan key:generate --show
 
 echo "Caching config..."
 php artisan config:cache
