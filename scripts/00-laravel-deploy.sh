@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Updating Composer..."
-composer self-update --2
+composer self-update —help?
+#composer self-update --2
 echo "Running composer"
 composer global require hirak/prestissimo
 composer install --no-dev --working-dir=/var/www/html
