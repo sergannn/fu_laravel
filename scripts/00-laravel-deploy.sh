@@ -9,6 +9,8 @@ composer install --no-dev --working-dir=/var/www/html
 
 echo "Installing Laravel Breeze..."
 composer require laravel/breeze --dev
+composer require spatie/laravel-file-manager
+php artisan vendor:publish --tag=spatie-file-manager-config
 
 php artisan breeze:install blade --no-interaction
 
