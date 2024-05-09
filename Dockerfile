@@ -1,24 +1,32 @@
-FROM ubuntu
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y nodejs \
-    npm                       # note this one
-FROM richarvey/nginx-php-fpm:3.1.6
+# Use NGINX Unit image as the base image
+FROM nginx/unit:1.18.0-php7.3
 
-COPY . .
+# Install Node.js and Composer
+RUN apk add --no-cache nodejs npm python3 py3-pip && \
+    npm install -g n && \
+    n latest && \
+    npm install -g composer
 
-# Image config
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
+# Copy your Laravel Breeze application code into the Docker image
+COPY. /var/apphome
 
-# Laravel config
-ENV APP_ENV production
-ENV APP_DEBUG false
-ENV LOG_CHANNEL stderr
+# Set the working directory
+WORKDIR /var/apphome
 
-# Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
+# Install Laravel Breeze dependencies
+RUN composer install
 
-CMD ["/start.sh"]
+# Install Node.js dependencies
+RUN npm install
+
+# Compile assets
+RUN npm run dev
+
+# Configure NGINX Unit
+COPY nginx-unit.conf /etc/nginx/unit.conf
+
+# Expose the necessary ports
+EXPOSE 80 443
+
+# Start NGINX Unit
+CMD ["nginx-unit", "-c", "/etc/nginx/unit.conf"]
