@@ -8,10 +8,10 @@ RUN apk add --no-cache nodejs npm python3 py3-pip && \
     npm install -g composer
 
 # Copy your Laravel Breeze application code into the Docker image
-COPY. /var/apphome
+COPY . /var/app
 
 # Set the working directory
-WORKDIR /var/apphome
+WORKDIR /var/app
 
 # Install Laravel Breeze dependencies
 RUN composer install
