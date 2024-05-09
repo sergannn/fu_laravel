@@ -23,10 +23,10 @@ RUN npm install
 RUN npm run dev
 
 # Configure NGINX Unit
-COPY nginx-unit.conf /etc/nginx/unit.conf
+#COPY nginx-unit.conf /etc/nginx/unit.conf
 
 # Expose the necessary ports
-EXPOSE 80 443
+#EXPOSE 80 443
 
 # Start NGINX Unit
-CMD ["nginx-unit", "-c", "/etc/nginx/unit.conf"]
+#CMD ["nginx-unit", "-c", "/etc/nginx/unit.conf"]
