@@ -9,3 +9,5 @@ COPY package.json ./
 USER node
 
 RUN npm install
+RUN apk add --no-cache curl && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
