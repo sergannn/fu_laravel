@@ -1,10 +1,18 @@
-FROM node:10-alpine
+# First stage: Install Node.js and npm
+FROM ubuntu AS nodejs
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs npm
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+# Second stage: Use the Nginx PHP image and copy Node.js from the first stage
+FROM richarvey/nginx-php-fpm:3.1.6
 
-WORKDIR /home/node/app
+# Copy Node.js and npm from the nodejs stage
+COPY --from=nodejs /usr/bin/node /usr/bin/node
+COPY --from=nodejs /usr/bin/npm /usr/bin/npm
+
 COPY . .
-COPY package.json ./
+
+# Image config
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
 ENV PHP_ERRORS_STDERR 1
@@ -20,12 +28,3 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 CMD ["/start.sh"]
-USER root
-
-RUN npm install
-RUN apk update
-RUN apk add --no-cache curl php php-cli php-curl php-json php-mbstring php-openssl php-tokenizer php-zlib php-pdo php-pecl-apcu && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-#RUN apk add --no-cache curl && \
-#    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
