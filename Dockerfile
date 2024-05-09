@@ -1,5 +1,11 @@
-# Use NGINX Unit image as the base image
-FROM nginx/unit:1.18.0-php7.3
+FROM node:10-alpine
 
-# Install Node.js and npm
-RUN apk add --no-cache nodejs npm
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+
+WORKDIR /home/node/app
+
+COPY package.json ./
+
+USER node
+
+RUN npm install
