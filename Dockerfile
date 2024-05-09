@@ -24,7 +24,7 @@ RUN useradd -u 1001 -r -g 0 -d /opt/app-root -s /sbin/nologin \
     COPY docker/scripts/opcache.ini "$PHP_INI_DIR/conf.d/opcache.ini"
 COPY docker/scripts/config.json $APP_ROOT/etc/config.json
 COPY --chmod=0555 docker/scripts/docker-entrypoint.sh /docker-entrypoint.sh
-COPY --chown=1001:0 src $APP_ROOT/app
+COPY --chown=1001:0 . $APP_ROOT/app
 
 WORKDIR $APP_ROOT
 USER 1001
