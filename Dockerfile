@@ -49,9 +49,9 @@ RUN composer require inertiajs/inertia-laravel
 ENV DB_CONNECTION=pgsql
 ENV DB_HOST=dpg-cosk30821fec73chnkig-a
 ENV DB_PORT=5432
-ENV DB_DATABASE=fuck
-ENV DB_USERNAME=you
-ENV DB_PASSWORD=your_database_password
+ENV DB_DATABASE=flutter_map
+ENV DB_USERNAME=flutter_map_user
+ENV DB_PASSWORD=PKWdnBfR2vtwNs0hOw537PpzEYBCeTXL
 
 RUN php artisan migrate --force
 # RUN php artisan migrate --force
