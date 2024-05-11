@@ -40,12 +40,19 @@ ENV APP_DEBUG false
 ENV LOG_CHANNEL stderr
 WORKDIR /app
 COPY --from=node /app .
-
+ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 RUN composer self-update
 RUN composer require laravel/breeze --dev
 RUN composer require inertiajs/inertia-laravel
+ENV DB_CONNECTION=pgsql
+ENV DB_HOST=dpg-cosk30821fec73chnkig-a
+ENV DB_PORT=5432
+ENV DB_DATABASE=fuck
+ENV DB_USERNAME=you
+ENV DB_PASSWORD=your_database_password
+
 RUN php artisan migrate --force
 # RUN php artisan migrate --force
 RUN chown -R application:application .
