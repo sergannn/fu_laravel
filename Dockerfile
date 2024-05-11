@@ -40,7 +40,7 @@ ENV APP_DEBUG false
 ENV LOG_CHANNEL stderr
 WORKDIR /app
 COPY --from=node /app .
-COPY entrypoint.d/ /entrypoint.d/
+COPY scripts/ /scripts/
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
