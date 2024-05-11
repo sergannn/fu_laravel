@@ -47,5 +47,5 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 RUN composer self-update
 RUN composer require laravel/breeze --dev
 RUN composer require inertiajs/inertia-laravel
-
+RUN php artisan migrate
 RUN chown -R application:application .
