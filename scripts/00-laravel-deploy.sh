@@ -1,24 +1,3 @@
-#!/usr/bin/env bash
-
-echo "Updating Composer..."
-#composer self-update
-#composer self-update --2
-echo "Running composer"
-#composer global require hirak/prestissimo
-composer install --no-dev --working-dir=/var/www/html
-
-echo "Installing Laravel Breeze..."
-composer require laravel/breeze --dev
-composer require spatie/laravel-file-manager
-php artisan vendor:publish --tag=spatie-file-manager-config
-
-php artisan breeze:install blade --no-interaction
-
-
-npm install
-
-#echo "Generating application key..."
-#php artisan key:generate --show
 echo 'clearing'
 php artisan config:clear
 echo "Caching config..."
