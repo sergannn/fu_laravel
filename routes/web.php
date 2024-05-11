@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MarkerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/ser',function() { return ' ser'; });
+
+Route::delete('/marker/{id}', [MarkerController::class, 'destroy'])->name('marker.delete');
+Route::post('/markers', [MarkerController::class, 'store'])->name('markers.store')->middleware('auth');
+//Route::get('/markers', [MarkerController::class, 'show'])->name('markers.show')->middleware('auth');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
