@@ -1,3 +1,4 @@
+php artisan breeze:install blade --no-interaction
 echo 'clearing'
 php artisan config:clear
 echo "Caching config..."
