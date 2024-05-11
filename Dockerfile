@@ -6,16 +6,6 @@ COPY . .
 # Building assets
 RUN npm install && npm run build
 
-ENV DB_CONNECTION=pgsql
-ENV DB_HOST=dpg-cosk30821fec73chnkig-a
-ENV DB_PORT=5432
-ENV DB_DATABASE=flutter_map
-ENV DB_USERNAME=flutter_map_user
-ENV DB_PASSWORD=PKWdnBfR2vtwNs0hOw537PpzEYBCeTXL
-RUN php artisan config:clear
-RUN php artisan cache:clear
-RUN php artisan migrate --force
-# RUN php artisan migrate --force
 # Build BE
 FROM webdevops/php-nginx:8.2-alpine
 
@@ -56,5 +46,16 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 RUN composer self-update
 RUN composer require laravel/breeze --dev
 RUN composer require inertiajs/inertia-laravel
+
+ENV DB_CONNECTION=pgsql
+ENV DB_HOST=dpg-cosk30821fec73chnkig-a
+ENV DB_PORT=5432
+ENV DB_DATABASE=flutter_map
+ENV DB_USERNAME=flutter_map_user
+ENV DB_PASSWORD=PKWdnBfR2vtwNs0hOw537PpzEYBCeTXL
+RUN php artisan config:clear
+RUN php artisan cache:clear
+RUN php artisan migrate --force
+# RUN php artisan migrate --force
 RUN chown -R application:application .
 
