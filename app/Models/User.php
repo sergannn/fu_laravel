@@ -44,4 +44,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function markers()
+    {
+    return $this->hasMany(Marker::class);
+    }
+    
 }
