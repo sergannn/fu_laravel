@@ -41,11 +41,12 @@ ENV LOG_CHANNEL stderr
 WORKDIR /app
 COPY --from=node /app .
 COPY scripts/ /scripts/
+RUN chmod +x scripts/00-laravel-deploy.sh
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 RUN composer self-update
 RUN composer require laravel/breeze --dev
 RUN composer require inertiajs/inertia-laravel
-RUN php artisan migrate
+RUN php artisan migrate --force
 RUN chown -R application:application .
