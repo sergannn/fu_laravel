@@ -1,8 +1,8 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -22,13 +23,30 @@ use App\Http\Controllers\MarkerController;
 
 Route::get('/markers', [MarkerController::class, 'show']);
 //Route::post('/markers', 'MarkerController@store');
-Route::post('/markers', [MarkerController::class, 'storeApi']);
+//Route::post('/markers', [MarkerController::class, 'storeApi']);
+
 
 Route::post('/register', 'AuthController@register');
-Route::post('/login', 'AuthController@login');
+Route::post('/login', 'AuthenticatedSessionController@store');
+//  Route::get('/login', [AuthenticatedSessionController::class,'store']);
 
 use App\Http\Controllers\UserAuthController;
 
 Route::get('login', [UserAuthController::class, 'login']);
 
 
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/markers/add', [MarkerController::class, 'storeMarker']);
+});
+
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::delete('/markers/{markerId}', [MarkerController::class, 'deleteMarker']);
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/user-markers', [MarkerController::class, 'showMarkersForUser']);
+});
+//require __DIR__.'/auth.php';
