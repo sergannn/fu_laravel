@@ -13,3 +13,6 @@ use App\Http\Controllers\MarkerController;
 Route::get('/markers', [MarkerController::class, 'show']);
 //Route::post('/markers', 'MarkerController@store');
 Route::post('/markers', [MarkerController::class, 'storeApi']);
+
+Route::post('/register', 'AuthController@register');
+Route::post('/login', 'AuthController@login');
