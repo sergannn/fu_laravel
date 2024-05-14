@@ -7,6 +7,37 @@ use Illuminate\Http\Request;
 
 class MarkerController extends Controller
 {
+
+    public function deleteMarker(Request $request, $markerId)
+    {
+        // Retrieve the authenticated user
+        $user = $request->user();
+
+        // Find the marker by ID and check if it belongs to the authenticated user
+        $marker = Marker::find($markerId);
+        if (!$marker || $marker->user_id!== $user->id) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        // Delete the marker
+        $marker->delete();
+
+        return response()->json(['success' => 'Marker deleted successfully']);
+    }
+
+    public function showMarkersForUser(Request $request)
+    {
+        // Retrieve the authenticated user
+        $user = $request->user();
+
+        // Fetch markers for the authenticated user
+        $markers = Marker::where('user_id', $user->id)->get();
+
+        // Return the markers
+        return response()->json($markers);
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -26,7 +57,7 @@ class MarkerController extends Controller
     }   
 
 
-    public function storeApi(Request $request)
+    public function storeMarker(Request $request)
     {
         // Validate the request data
         $request->validate([
