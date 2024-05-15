@@ -28,8 +28,10 @@ public function login(Request $request)
 
     $token = $user->createToken($user->name. '-AuthToken')->plainTextToken;
 
+   
     return response()->json([
         'access_token' => $token,
+        'user_id' => $user->id, 
     ]);
 }
 }
