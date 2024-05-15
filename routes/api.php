@@ -33,7 +33,7 @@ Route::post('/login', 'AuthenticatedSessionController@store');
 use App\Http\Controllers\UserAuthController;
 
 Route::get('login', [UserAuthController::class, 'login']);
-
+Route::get('logout', [UserAuthController::class, 'logout']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
