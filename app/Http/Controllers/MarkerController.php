@@ -110,7 +110,9 @@ class MarkerController extends Controller
      */
     public function show()
     {
-        $markers = Marker::all();
+       // $markers = Marker::all();
+            $markers = Marker::where('created_at', '>=', now()->subHours(2))->get();
+   
 
         return $markers->toJson();
     }
