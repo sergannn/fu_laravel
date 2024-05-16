@@ -56,7 +56,7 @@ ENV DB_PASSWORD=PKWdnBfR2vtwNs0hOw537PpzEYBCeTXL
 RUN php artisan config:clear
 RUN php artisan cache:clear
 RUN php artisan install:api
-RUN php artisan migrate --force
+# RUN php artisan migrate --force
 # RUN php artisan migrate --force
 RUN chown -R application:application .
 
