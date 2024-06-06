@@ -78,9 +78,9 @@ class MarkerController extends Controller
 
         // Save the marker
         $marker->save();
-
+        $markerId = $marker->id;
         // Return a JSON response indicating success
-        return response()->json(['message' => 'Marker added successfully.'], 201);
+        return response()->json(['message' => 'Marker added successfully.', 'marker_id' => $markerId], 201);
     }
     /**
      * Store a newly created resource in storage.
