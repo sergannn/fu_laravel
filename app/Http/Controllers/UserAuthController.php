@@ -31,6 +31,8 @@ class UserAuthController extends Controller
             return response()->json([
                 'access_token' => $token,
                 'user_id' => $user->id, 
+                'username' => $user->email,
+                'photo' => 'https://cdn.profi.ru/xfiles/pfiles/10c8fcca7d424731bd1c38eba954501b.jpg-profi_a34-320.jpg'
             ]);
 }
 
