@@ -10,6 +10,29 @@ use App\Models\User;
 class UserAuthController extends Controller
 {
             //
+  public function showUsers()
+    {
+        // Retrieve all users
+        $users = User::all();
+    
+        // Initialize an array to hold merged user data
+        $mergedData = [];
+    
+        /*foreach ($users as $user) {
+            // Retrieve UserInfo for each user
+            $userInfo = UserInfo::where("user_id", $user->id)->first(); // Assuming one-to-one relationship
+    
+            // Merge user data with userInfo
+            $mergedData[] = [
+                'user' => $user,
+                'userInfo' => $userInfo ?? null, // Use null if no UserInfo is found
+            ];
+        }*/
+    
+        // Return the merged data as JSON
+        return response()->json($users);
+    }
+    
         public function login(Request $request)
         {
             //echo 'hello';
