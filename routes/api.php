@@ -32,7 +32,6 @@ Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthenticatedSessionController@store');
 //  Route::get('/login', [AuthenticatedSessionController::class,'store']);
 
-use App\Http\Controllers\UserAuthController;
 
 Route::get('login', [UserAuthController::class, 'login']);
 Route::get('logout', [UserAuthController::class, 'logout']);
