@@ -20,7 +20,7 @@ Route::get('/user', function (Request $request) {
 
 
 use App\Http\Controllers\MarkerController;
-Route::get('/users', [UserController::class, 'showUsers']);
+Route::get('/users', [UserAuthController::class, 'showUsers']);
 Route::get('/markers', [MarkerController::class, 'show']);
 //Route::post('/markers', 'MarkerController@store');
 //Route::post('/markers', [MarkerController::class, 'storeApi']);
