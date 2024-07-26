@@ -44,7 +44,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 RUN composer self-update
-RUN composer require laravel/breeze --dev
+# RUN composer require laravel/breeze --dev
 RUN composer require inertiajs/inertia-laravel
 
 ENV DB_CONNECTION=pgsql
@@ -57,7 +57,7 @@ RUN php artisan config:clear
 RUN php artisan cache:clear
 RUN php artisan install:api
 
-RUN composer require moonshine/moonshine
+#RUN composer require moonshine/moonshine
 #RUN php artisan moonshine:install
 
 
