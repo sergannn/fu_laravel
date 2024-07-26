@@ -58,7 +58,7 @@ RUN php artisan cache:clear
 RUN php artisan install:api
 
 RUN composer require moonshine/moonshine
-RUN php artisan moonshine:install
+#RUN php artisan moonshine:install
 
 
 # RUN php artisan migrate --force
