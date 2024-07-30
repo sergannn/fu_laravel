@@ -21,7 +21,9 @@ Route::get('/user', function (Request $request) {
 
 
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\UserCatsController;
 use App\Http\Controllers\MarkerController;
+Route::get('/cats', [UserCatsController::class, 'showCats']);
 Route::get('/users', [UserAuthController::class, 'showUsers']);
 Route::get('/markers', [MarkerController::class, 'show']);
 //Route::post('/markers', 'MarkerController@store');
