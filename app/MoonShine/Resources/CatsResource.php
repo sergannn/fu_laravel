@@ -10,7 +10,7 @@ use App\Models\Cat;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\TEXT;
+use MoonShine\Fields\Text;
 use MoonShine\Components\MoonShineComponent;
 
 /**
