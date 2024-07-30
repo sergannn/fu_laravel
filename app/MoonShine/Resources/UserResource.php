@@ -12,7 +12,7 @@ use App\MoonShine\Pages\User\UserDetailPage;
 
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\TEXT;
+use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Pages\Page;
 
