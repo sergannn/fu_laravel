@@ -3,7 +3,7 @@ FROM node:18-alpine as node
 # Build FE first
 WORKDIR /app
 COPY . .
-# Building assets
+# Building assets !
 RUN npm install && npm run build
 
 # Build BE
