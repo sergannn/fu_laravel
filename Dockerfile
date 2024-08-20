@@ -46,14 +46,11 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 RUN composer self-update
 # RUN composer require laravel/breeze --dev
 RUN composer require inertiajs/inertia-laravel
-
+RUN composer require laravel/sanctum
 ENV DB_CONNECTION=pgsql
 #ENV DB_HOST=dpg-cosk30821fec73chnkig-a
 ENV DB_HOST=dpg-cr1qtpbqf0us739hf320-a.oregon-postgres.render.com
 ENV DB_PORT=5432
-#ENV DB_DATABASE=flutter_map
-#ENV DB_USERNAME=flutter_map_user
-#ENV DB_PASSWORD=PKWdnBfR2vtwNs0hOw537PpzEYBCeTXL
 
 ENV DB_DATABASE=ser_kzw8
 ENV DB_USERNAME=ser_kzw8_user
