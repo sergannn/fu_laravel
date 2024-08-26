@@ -14,7 +14,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
 
-use App\Http\Controllers\Auth\OnlineController;
+use App\Http\Controllers\OnlineController;
 
 Route::get('/update-value', [OnlineController::class, 'updateValue']);
 Route::get('/get-value', [OnlineController::class, 'getValue']);
