@@ -34,7 +34,7 @@ class OnlineController extends Controller
 
             // Execute the query
             $result = DB::select($query);
-                echo $query;exit();
+           //     echo $query;exit();
             // Return a success response with the returned data
             return response()->json(['message' => 'Value updated successfully', 'data' => $result[0] ?? null], 200);
         } catch (\Exception $e) {
