@@ -14,6 +14,11 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
 
+Route::post('/email/verify/{id}/{bool}', [VerifyEmailController::class, '__invoke']);
+
+Route::get('/email/verify/{id}/{bool}', [VerifyEmailController::class, '__invoke']);
+
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
