@@ -61,7 +61,7 @@ class OnlineController extends Controller
                 ";
    
             $result = DB::select($query);
-            echo $query;exit();
+         //   echo $query;exit();
             return response()->json(['value' => $result[0] ?? null], 200);
         } catch (\Exception $e) {
             \Log::error('Database query failed', ['exception' => $e->getMessage()]);
