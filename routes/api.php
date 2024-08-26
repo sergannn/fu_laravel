@@ -14,10 +14,12 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
 
-Route::post('/email/verify/{id}/{bool}', [VerifyEmailController::class, '__invoke']);
+use App\Http\Controllers\Auth\OnlineController;
 
-Route::get('/email/verify/{id}/{bool}', [VerifyEmailController::class, '__invoke']);
+//Route::post('/email/verify/{id}/{bool}', [VerifyEmailController::class, '__invoke']);
 
+
+Route::get('/api/update-value', [OnlineController::class, 'updateValue']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
