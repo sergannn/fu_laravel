@@ -29,7 +29,7 @@ class OnlineController extends Controller
                 )
                 RETURNING \"uid\", \"status\";
             ";
-            echo $query;exit();
+        //    echo $query;exit();
             \Log::info("Executing query: " . $query);
 
             // Execute the query
