@@ -28,7 +28,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserCatsController;
 use App\Http\Controllers\MarkerController;
