@@ -38,8 +38,8 @@ Route::get('/markers', [MarkerController::class, 'show']);
 //Route::post('/markers', 'MarkerController@store');
 //Route::post('/markers', [MarkerController::class, 'storeApi']);
 
-
-Route::post('/register', 'AuthController@register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
+//Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthenticatedSessionController@store');
 //  Route::get('/login', [AuthenticatedSessionController::class,'store']);
 
